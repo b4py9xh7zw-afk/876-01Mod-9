@@ -45,6 +45,13 @@ Route::middleware(['api', 'auth:sanctum', 'throttle:60,1'])->group(function () {
         Route::post('/{examPaper}/submit', [ExamController::class, 'submit']);
         Route::get('/records', [ExamController::class, 'myRecords']);
         Route::get('/records/{record}', [ExamController::class, 'showRecord']);
+        Route::post('/{examPaper}/heartbeat', [ExamController::class, 'heartbeat']);
+        Route::post('/{examPaper}/disconnection', [ExamController::class, 'reportDisconnection']);
+        Route::post('/{examPaper}/sync-answers', [ExamController::class, 'syncAnswers']);
+        Route::post('/{examPaper}/request-extension', [ExamController::class, 'requestExtension']);
+        Route::get('/reviews/pending', [ExamController::class, 'getPendingReviews']);
+        Route::post('/reviews/{record}', [ExamController::class, 'reviewExtension']);
+        Route::get('/records/{record}/events', [ExamController::class, 'getNetworkEvents']);
     });
 
     Route::prefix('scores')->group(function () {

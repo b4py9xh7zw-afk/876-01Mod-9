@@ -16,6 +16,12 @@ api.interceptors.request.use(
     if (token) {
       config.headers.Authorization = `Bearer ${token}`
     }
+
+    const sessionId = sessionStorage.getItem('exam_session_id')
+    if (sessionId) {
+      config.headers['X-Session-Id'] = sessionId
+    }
+
     return config
   },
   error => {

@@ -55,6 +55,12 @@ const routes = [
     name: 'Statistics',
     component: () => import('../views/statistics/Index.vue'),
     meta: { requiresAuth: true, roles: ['admin', 'teacher'] }
+  },
+  {
+    path: '/exam-reviews',
+    name: 'ExamReviews',
+    component: () => import('../views/exams/Review.vue'),
+    meta: { requiresAuth: true, roles: ['admin', 'teacher'] }
   }
 ]
 
